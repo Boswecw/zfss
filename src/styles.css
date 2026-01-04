@@ -1,0 +1,243 @@
+/* ZFSS - Zen Feedback & Service System
+   Dark theme with calm, focused aesthetics */
+
+:root {
+  --bg-primary: #0b0f14;
+  --bg-secondary: #141a22;
+  --bg-tertiary: #1c242e;
+  --text-primary: #e7edf5;
+  --text-secondary: #8b98a8;
+  --text-muted: #5c6873;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --success: #22c55e;
+  --success-bg: rgba(34, 197, 94, 0.1);
+  --error: #ef4444;
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(255, 255, 255, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Signal Capture View */
+.signal-capture {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 16px;
+}
+
+.capture-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.capture-header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.source-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.source-select label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.source-select select {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.source-select select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.capture-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+textarea {
+  flex: 1;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: inherit;
+  resize: none;
+  min-height: 150px;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  background: var(--bg-tertiary);
+}
+
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.app-key-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-key-row label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.app-key-row input {
+  flex: 1;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.app-key-row input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+.app-key-row input::placeholder {
+  color: var(--text-muted);
+}
+
+.capture-footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.status.success {
+  color: var(--success);
+}
+
+.status.error {
+  color: var(--error);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+button {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+button:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border-focus);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+button.primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Success flash animation */
+.signal-capture.captured {
+  animation: flash-success 0.3s ease;
+}
+
+@keyframes flash-success {
+  0%, 100% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: inset 0 0 0 3px var(--success);
+  }
+}
+
+/* Error flash animation */
+.signal-capture.error {
+  animation: flash-error 0.3s ease;
+}
+
+@keyframes flash-error {
+  0%, 100% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: inset 0 0 0 3px var(--error);
+  }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZFSS - Signal Capture</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="signal-capture">
+        <header class="capture-header">
+          <h1>Capture Signal</h1>
+          <div class="source-select">
+            <label for="source">Source:</label>
+            <select id="source">
+              <option value="in_app">In-App</option>
+              <option value="email">Email</option>
+              <option value="dm">DM</option>
+              <option value="call">Call</option>
+              <option value="internal">Internal</option>
+              <option value="partner">Partner</option>
+              <option value="monitoring">Monitoring</option>
+            </select>
+          </div>
+        </header>
+
+        <div class="capture-body">
+          <textarea
+            id="raw-text"
+            placeholder="Capture the user's feedback exactly as expressed..."
+            autofocus
+          ></textarea>
+
+          <div class="app-key-row">
+            <label for="app-key">App Key (optional):</label>
+            <input type="text" id="app-key" placeholder="e.g., forge-command" />
+          </div>
+        </div>
+
+        <footer class="capture-footer">
+          <div class="status" id="status"></div>
+          <div class="actions">
+            <span class="hint">Ctrl+Enter to capture, Esc to dismiss</span>
+            <button id="capture-btn" class="primary">Capture Signal</button>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
