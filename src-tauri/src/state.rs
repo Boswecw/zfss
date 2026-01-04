@@ -3,7 +3,7 @@
 //! Shared state for Tauri application, injected into IPC commands.
 
 use crate::config::Settings;
-use crate::models::CurrentUser;
+use crate::models::{CurrentUser, UserRole};
 use sqlx::PgPool;
 use std::sync::Mutex;
 use std::time::Instant;
@@ -50,6 +50,16 @@ impl AppState {
             .ok()
             .and_then(|guard| guard.as_ref().map(|u| u.id.clone()))
             .unwrap_or_else(|| self.settings.current_user_id.clone())
+    }
+
+    /// Get the current user role (from settings or authenticated user)
+    pub fn current_user_role(&self) -> UserRole {
+        self.current_user
+            .lock()
+            .ok()
+            .and_then(|guard| guard.as_ref().map(|u| u.role))
+            .or_else(|| UserRole::from_str(&self.settings.current_user_role))
+            .unwrap_or(UserRole::Steward) // Default to Steward for local dev
     }
 
     /// Get monotonic milliseconds since app start

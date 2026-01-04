@@ -14,6 +14,9 @@ pub struct Settings {
     /// Current user ID (for operations)
     pub current_user_id: String,
 
+    /// Current user role (Steward, Operator, Engineer, AI)
+    pub current_user_role: String,
+
     /// Window always on top for quick capture
     pub always_on_top: bool,
 }
@@ -29,6 +32,10 @@ impl Settings {
         // Optional: Current user (defaults to 'system')
         let current_user_id = env::var("ZFSS_USER_ID").unwrap_or_else(|_| "system".to_string());
 
+        // Optional: Current user role (defaults to 'Steward' for local dev)
+        let current_user_role =
+            env::var("ZFSS_USER_ROLE").unwrap_or_else(|_| "Steward".to_string());
+
         // Optional: Always on top (defaults to false)
         let always_on_top = env::var("ZFSS_ALWAYS_ON_TOP")
             .map(|v| v == "true" || v == "1")
@@ -37,6 +44,7 @@ impl Settings {
         Ok(Self {
             database_url,
             current_user_id,
+            current_user_role,
             always_on_top,
         })
     }
@@ -59,6 +67,7 @@ impl Default for Settings {
         Self {
             database_url: "postgresql://localhost/zfss".to_string(),
             current_user_id: "system".to_string(),
+            current_user_role: "Steward".to_string(),
             always_on_top: false,
         }
     }

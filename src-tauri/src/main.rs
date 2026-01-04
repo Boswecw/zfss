@@ -17,7 +17,37 @@ mod state;
 use crate::config::Settings;
 use crate::constraints::HOTKEY_DEBOUNCE_MS;
 use crate::db::create_pool;
-use crate::ipc::signal_cmds::{capture_signal, get_signal, link_signal_to_issue, list_signals};
+use crate::ipc::{
+    // Artifact commands
+    create_artifact,
+    get_artifact,
+    has_verified_artifact,
+    list_artifacts_for_issue,
+    verify_artifact,
+    // Decision commands
+    get_current_decision,
+    get_decision,
+    list_decisions_for_issue,
+    record_decision,
+    // Issue commands
+    create_issue,
+    get_issue,
+    list_issues,
+    transition_issue,
+    // Response commands
+    approve_response,
+    block_response,
+    draft_response,
+    get_response,
+    list_responses_for_signal,
+    mark_response_sent,
+    submit_response,
+    // Signal commands
+    capture_signal,
+    get_signal,
+    link_signal_to_issue,
+    list_signals,
+};
 use crate::state::AppState;
 
 use std::sync::Arc;
@@ -136,10 +166,35 @@ async fn main() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
+            // Signal commands
             capture_signal,
             list_signals,
             get_signal,
             link_signal_to_issue,
+            // Issue commands
+            create_issue,
+            list_issues,
+            get_issue,
+            transition_issue,
+            // Decision commands
+            record_decision,
+            get_decision,
+            list_decisions_for_issue,
+            get_current_decision,
+            // Artifact commands
+            create_artifact,
+            get_artifact,
+            list_artifacts_for_issue,
+            verify_artifact,
+            has_verified_artifact,
+            // Response commands
+            draft_response,
+            get_response,
+            list_responses_for_signal,
+            submit_response,
+            approve_response,
+            block_response,
+            mark_response_sent,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
