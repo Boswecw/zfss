@@ -3,49 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZFSS - Signal Capture</title>
+    <title>ZFSS - Zen Feedback & Service System</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div id="app">
-      <div class="signal-capture">
-        <header class="capture-header">
-          <h1>Capture Signal</h1>
-          <div class="source-select">
-            <label for="source">Source:</label>
-            <select id="source">
-              <option value="in_app">In-App</option>
-              <option value="email">Email</option>
-              <option value="dm">DM</option>
-              <option value="call">Call</option>
-              <option value="internal">Internal</option>
-              <option value="partner">Partner</option>
-              <option value="monitoring">Monitoring</option>
-            </select>
-          </div>
-        </header>
-
-        <div class="capture-body">
-          <textarea
-            id="raw-text"
-            placeholder="Capture the user's feedback exactly as expressed..."
-            autofocus
-          ></textarea>
-
-          <div class="app-key-row">
-            <label for="app-key">App Key (optional):</label>
-            <input type="text" id="app-key" placeholder="e.g., forge-command" />
-          </div>
+      <!-- Navigation sidebar -->
+      <nav id="nav" class="nav-sidebar">
+        <div class="nav-header">
+          <h1>ZFSS</h1>
+          <span class="nav-subtitle">Feedback Metabolism</span>
         </div>
-
-        <footer class="capture-footer">
-          <div class="status" id="status"></div>
-          <div class="actions">
-            <span class="hint">Ctrl+Enter to capture, Esc to dismiss</span>
-            <button id="capture-btn" class="primary">Capture Signal</button>
+        <ul class="nav-menu">
+          <li><a href="#/" class="nav-link" data-route="/">Dashboard</a></li>
+          <li><a href="#/signals" class="nav-link" data-route="/signals">Signals</a></li>
+          <li><a href="#/issues" class="nav-link" data-route="/issues">Issues</a></li>
+          <li><a href="#/capture" class="nav-link nav-capture" data-route="/capture">+ Capture</a></li>
+        </ul>
+        <div class="nav-footer">
+          <div class="nav-user">
+            <span id="current-role" class="user-role">Steward</span>
           </div>
-        </footer>
-      </div>
+          <span class="nav-hint">Ctrl+Alt+Z to toggle</span>
+        </div>
+      </nav>
+
+      <!-- Main content area -->
+      <main id="main-content" class="main-content">
+        <!-- Views are rendered here -->
+        <div id="view-container" class="view-container">
+          <div class="loading">Loading...</div>
+        </div>
+      </main>
     </div>
     <script type="module" src="./main.ts"></script>
   </body>
