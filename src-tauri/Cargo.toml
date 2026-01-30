@@ -5,7 +5,7 @@ description = "Zen Feedback & Service System - Feedback metabolism for the Forge
 authors = ["Forge Ecosystem"]
 license = "MIT"
 repository = ""
-edition = "2021"
+edition = "2024"
 
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
