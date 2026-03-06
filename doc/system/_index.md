@@ -1,9 +1,18 @@
 # ZFSS — System Documentation
 
-**Document version:** 1.0 (2026-02-25)
+**Document version:** 1.1 (2026-03-06) — Normalized to Forge Documentation Protocol v1
+**Protocol:** Forge Documentation Protocol v1
 
 > Zen Feedback & Service System — append-only feedback metabolism for the Forge ecosystem.
 > "Capture. Triage. Decide. Prove. Respond."
+
+This `doc/system/` tree uses explicit truth classes:
+- Canonical facts define ZFSS's append-only doctrine, local authority model, and ecosystem boundary.
+- Snapshot facts define audit-derived counts such as commands, tables, migrations, tests, or implementation inventory.
+
+Assembly contract:
+- Command: `bash doc/system/BUILD.sh`
+- Output: `doc/zsSYSTEM.md`
 
 | Part | File | Contents |
 |------|------|----------|
@@ -13,9 +22,9 @@
 | §4 | `04-project-structure.md` | Dual source trees (src-tauri/ + src/), module map |
 | §5 | `05-config-env.md` | Environment variables, settings, device ID persistence |
 | §6 | `06-frontend.md` | Signal capture UI, views, router, API layer |
-| §7 | `07-tauri-commands.md` | 23 IPC commands across 5 canonical object domains |
+| §7 | `07-tauri-commands.md` | Tauri command surface across canonical object domains |
 | §8 | `08-backend-internals.md` | Models, lifecycle state machines, repository, roles |
-| §9 | `09-database-schema.md` | 11 tables, 7 views, 3 migrations, append-only triggers |
+| §9 | `09-database-schema.md` | Database schema, append-only triggers, and migration guidance |
 | §10 | `10-ecosystem-integration.md` | DataForge authority, Forge design patterns, future hooks |
 | §11 | `11-handover.md` | Implementation status, known issues, next priorities |
 
@@ -25,4 +34,4 @@
 bash doc/system/BUILD.sh   # Assembles all parts into doc/zsSYSTEM.md
 ```
 
-*Last updated: 2026-02-25*
+*Last updated: 2026-03-06*

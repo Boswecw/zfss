@@ -67,7 +67,7 @@ zfss/
 │   ├── local_postgres_authority.md  # Cutover documentation
 │   └── ...                          # Migration/authority docs
 │
-├── doc/                             # BDS Protocol documentation
+├── doc/                             # Forge Documentation Protocol docs
 │   ├── system/                      # Modular sections
 │   │   ├── _index.md
 │   │   ├── BUILD.sh
