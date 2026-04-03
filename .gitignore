@@ -24,3 +24,5 @@ Thumbs.db
 # Tauri
 src-tauri/target/
 src-tauri/Cargo.lock
+
+context-bundle.md
